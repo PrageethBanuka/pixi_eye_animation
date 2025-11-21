@@ -95,7 +95,8 @@ class CuteEyes:
 
 # --- Display setup ---
 # SPI bus & pins (change if using different wiring)
-spi = board.SPI()  # uses SCK/MOSI/MISO default
+# On Blinka for Raspberry Pi, prefer creating SPI via busio with explicit pins
+spi = busio.SPI(clock=board.SCLK, MOSI=board.MOSI, MISO=board.MISO)
 cs_pin = digitalio.DigitalInOut(board.CE0)    # Chip Select (GPIO8)
 dc_pin = digitalio.DigitalInOut(board.D25)    # Data/Command (GPIO25)
 rst_pin = digitalio.DigitalInOut(board.D24)   # Reset (GPIO24)
